@@ -151,5 +151,125 @@ transform: translateX(0);
   align-items: center;
 
 }
+#category-items{
+    flex-basis: 85%;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    align-items: center;
+}
+.category-cart{
+    height: 7rem;
+    width: 7rem;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
+#category-items > .category-cart:nth-child(4n+1)> .category-img{
+    background-color: rgba(255,0,0,0.348);
+}
+#category-items > .category-cart:nth-child(4n+2)> .category-img{
+    background-color: rgba(0,128,0,0.257);
+}
+#category-items > .category-cart:nth-child(4n+3)> .category-img{
+    background-color: rgba(0,0,255,0.119);
+}
+#category-items > .category-cart:nth-child(4n+4)> .category-img{
+    background-color: rgba(255,255,0,0.345);
+}
 
+.category-img {
+  height: 3.5rem;
+  width: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #ff0000;
+}
+.category-img>img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.category-name {
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-align: center;
+  word-break: break-all;
+}
+/* ! HIGHLIGHTS */
+#highlights {
+  height: 12rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.highlight-container {
+  height: 7rem;
+  width: 13.5rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.8rem;
+}
+.one {
+  background-color: rgb(243, 232, 255);
+}
+.two {
+  background-color: rgb(254, 249, 194);
+}
+.three {
+  background-color: rgb(219, 252, 231);
+}
+.four {
+  background-color: rgb(252, 231, 243);
+}
+.hig/* !FOOTER */
+footer {
+  height: 12rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.449);
+  background-color: rgb(253, 253, 253);
+}
+hlight-icon {
+  font-size: 1.8rem;
+}
+.highlight-title {
+  font-weight: 600;
+}
+.highlight-description {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+/* !FOOTER */
+footer {
+  height: 12rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.449);
+  background-color: rgb(253, 253, 253);
+}
+footer > h2 {
+  color: rgb(96, 8, 198);
+  font-size: 2rem;
+  font-weight: 800;
+}
+footer > p {
+  font-size: 1rem;
+}
