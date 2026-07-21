@@ -16,6 +16,9 @@ nav {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 100
 }
 
 #nav1 {
@@ -89,11 +92,12 @@ nav {
 
 /* ! HEADER */
 header {
-  padding: 5rem 0;
   height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  width:80%
 }
 
 #banner-container {
@@ -137,7 +141,8 @@ header {
   height: 400px;
   display: flex;
   flex-direction: column;
-  padding: 0 18rem;
+  margin: 0 auto;
+  width: 80%;
 }
 #category-title {
   flex-basis: 15%;
@@ -184,7 +189,7 @@ header {
   border-radius: 10px;
   background-color: #ff0000;
 }
-.category-img>img{
+.category-img > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -200,15 +205,16 @@ header {
 /* ! HIGHLIGHTS */
 #highlights {
   height: 12rem;
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  margin: 0 auto;
+  width: 80%;
 }
 .highlight-container {
   height: 7rem;
-  width: 13.5rem;
+  width: 18rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -240,7 +246,7 @@ header {
 /* !FOOTER */
 footer {
   height: 12rem;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -248,6 +254,7 @@ footer {
   gap: 0.8rem;
   border-top: 1px solid rgba(0, 0, 0, 0.449);
   background-color: rgb(253, 253, 253);
+  margin: 0 auto;
 }
 
 footer > h2 {

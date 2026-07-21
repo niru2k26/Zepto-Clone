@@ -20,7 +20,7 @@ let thumbnails = [
   {
     slug: "beauty",
     name: "Beauty",
-    url: "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp", 
+    url: "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
   },
   {
     slug: "fragrances",
@@ -143,10 +143,10 @@ let thumbnails = [
 let fetchCategories = () => {
   let categoryItems = document.getElementById("category-items")
   thumbnails.forEach((category) => {
-     categoryItems.innerHTML += `
+    categoryItems.innerHTML += `
       <div class="category-card">
          <div class="category-img">
-           <img src=${category.url} alt=${category.slug} height=>
+           <img src=${category.url} alt=${category.slug} >
          </div>
          <p class="category-name">${category.name}</p>
        </div> 
@@ -154,3 +154,23 @@ let fetchCategories = () => {
   })
 }
 fetchCategories()
+
+//!Individual Category
+let categoryCards = document.querySelectorAll(".category-card")
+categoryCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    let categoryName = card.querySelector("img").alt
+    sessionStorage.setItem("clickedCategory", categoryName)
+    fetchingIndividualCategoryData()
+    setTimeout(() => {
+      location.assign("./Category.html")
+    },2000)
+  })
+})
+
+async function fetchingIndividualCategoryData() {
+  let categoryName = sessionStorage.getItem("clickedCategory")
+  let response = await fetch(`https://dummyjson.com/products/category/${categoryName}`)
+  let { products } = await response.json()
+  localStorage.setItem("clickedCategoryData", JSON.stringify(products))
+}
