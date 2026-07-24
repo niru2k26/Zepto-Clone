@@ -101,12 +101,13 @@ header {
 }
 
 #banner-container {
-  height: 450px;
+  height: 550px;
   width: 900px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   overflow: hidden;
+  margin-top: 7rem;
 }
 
 #banner-container > img {
@@ -143,6 +144,7 @@ header {
   flex-direction: column;
   margin: 0 auto;
   width: 80%;
+  margin-top: 150px;
 }
 #category-title {
   flex-basis: 15%;
@@ -150,6 +152,7 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
 }
 
 #category-items {
@@ -166,6 +169,7 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  cursor: pointer;
 }
 #category-items > .category-card:nth-child(4n + 1) > .category-img {
   background-color: rgba(255, 0, 0, 0.348);

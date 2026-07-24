@@ -148,6 +148,10 @@ header {
 input {
   accent-color: rgb(96, 8, 198);
 }
+.clicked{
+  color: red;
+}
+
 #sidebar-two {
   flex-basis: 80%;
   display: grid;
@@ -155,8 +159,8 @@ input {
 }
 
 .product-cards {
-  height: 20rem;
-  width: 15rem;
+  min-height: 20rem;
+  min-width: 15rem;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -204,8 +208,10 @@ input {
 
 .product-card-two {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
-  padding: 0 1rem;
+  padding: 0.6rem;
+  height: 50%;
 }
 .delivery-time {
   width: 40%;
@@ -213,11 +219,12 @@ input {
   border-radius: 5px;
   background-color: #efefef;
   box-shadow: rgba(0, 0, 0, 0.099) 0px 3px 8px;
-  margin: 0.5rem 0px;
+  /* margin: 0.5rem 0px; */
 }
 .product-title{
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  word-break:break-all;
 }
 .product-brand{
   font-weight: 500;
@@ -228,7 +235,7 @@ input {
   /* border: 2px solid red; */
   justify-content: space-between;
   position: relative;
-  margin: 0.3rem 0px;
+  margin-bottom: 0.8rem;
 }
 .discount-price{
   font-size: 1rem;
@@ -252,7 +259,15 @@ input {
 
 .ratings{
   /* border: 2px solid red; */
-  margin-top: 0.4rem;
-  font-size: 1rem;
-  font-weight: 500;
+  /* margin-top: 0.4rem; */
+  font-size: 0.9rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.2rem;
+}
+.ratings>i{
+  color: gold;
+
 }
