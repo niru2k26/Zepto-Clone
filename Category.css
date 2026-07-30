@@ -271,3 +271,12 @@ input {
   color: gold;
 
 }
+
+.quantity-btn{
+  background-color:rgb(96, 8, 198);
+  color: white;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  border:none;
+}

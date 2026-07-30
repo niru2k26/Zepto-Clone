@@ -20,6 +20,8 @@ let sidebarTwo = document.getElementById("sidebar-two")
 function displayingProducts(products) {
   sidebarTwo.innerHTML = ""
   products.forEach((item) => {
+    let finalPrice = Math.ceil(item.price - (item.price * item.discountPercentage / 100))
+    let qty = getProductQuantity(item.id)
     sidebarTwo.innerHTML += `
   <article class="product-cards">
         <div class="product-card-one">
@@ -32,9 +34,19 @@ function displayingProducts(products) {
           <p class="product-title">${item.title}</p>
           <p class="product-brand">${item.brand || "Imported"}</p>
           <div class="product-price">
-            <p class="discount-price">$${Math.ceil(item.price - (item.price * item.discountPercentage / 100))}</p>
+            <p class="discount-price">$${finalPrice}</p>
             <p class="actual-price">$${item.price}</p>
-            <button class="addBtn">Add</button>
+            ${qty == 0 ?
+        `<button class="addBtn" data-id=${item.id} data-price=${finalPrice} data-qty=${qty} data-title=${item.title} data-img=${item.thumbnail}>Add</button>`
+        :
+        `
+      <div class="addBtnQtyContainer">
+         <button class="decrementBtn quantity-btn" data-id=${item.id}>-</button>
+         <span>${qty}</span>
+         <button class="incrementBtn quantity-btn" data-id=${item.id}>+</button>
+       </div>
+      `
+      }
           </div>
           <p class="ratings"><i class="fa-solid fa-star"></i> ${item.rating} (${item.stock})</p>
         </div>
@@ -42,6 +54,9 @@ function displayingProducts(products) {
   `
   })
   wishlistIcons()
+  addButtonEvents()
+  increaseButtonEvents()
+  decreaseButtonEvents()
 }
 displayingProducts(productDatas)
 
@@ -49,7 +64,6 @@ displayingProducts(productDatas)
 function wishlistIcons() {
   let wishListIcons = document.querySelectorAll(".wishlist>i")
   wishListIcons.forEach((item) => {
-    console.log(item)
     item.addEventListener("click", () => {
       item.classList.toggle("clicked")
     })
@@ -68,9 +82,9 @@ let inStock = document.getElementById("inStock")
 function applyingFilters() {
   let filteredProducts = [...originalDatas]
   if (priceAsc.checked) {
-    filteredProducts.sort((a, b) => a.price - b.price)
+    filteredProducts.sort((a, b) =>  Math.ceil(a.price - (a.price * a.discountPercentage / 100)) -  Math.ceil(b.price - (b.price * b.discountPercentage / 100)))
   } else if (priceDesc.checked) {
-    filteredProducts.sort((a, b) => b.price - a.price)
+    filteredProducts.sort((a, b) => Math.ceil(b.price - (b.price * b.discountPercentage / 100)) -  Math.ceil(a.price - (a.price * a.discountPercentage / 100)))
   } else if (discount.checked) {
     filteredProducts.sort((a, b) => b.discountPercentage - a.discountPercentage)
   } else {
@@ -101,3 +115,43 @@ maxPrice.addEventListener("input", () => {
   applyingFilters()
 })
 applyingFilters()
+
+//!Add Button Events
+function addButtonEvents() {
+  let addBtns = document.querySelectorAll(".addBtn")
+  addBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let product = {
+        id: Number(btn.dataset.id),
+        title: btn.dataset.title,
+        price: Number(btn.dataset.price),
+        img: btn.dataset.img
+      }
+      addToCart(product)
+      displayingProducts(productDatas)
+    })
+  })
+}
+
+
+//!Increase Button Events
+function increaseButtonEvents() {
+  let increaseBtns = document.querySelectorAll(".incrementBtn")
+  increaseBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      incrementQuantity(Number(btn.dataset.id))
+      displayingProducts(productDatas)
+    })
+  })
+}
+
+//!Decrease Button Events
+function decreaseButtonEvents() {
+  let decreaseBtns = document.querySelectorAll(".decrementBtn")
+  decreaseBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      decrementQuantity(Number(btn.dataset.id))
+      displayingProducts(productDatas)
+    })
+  })
+}
